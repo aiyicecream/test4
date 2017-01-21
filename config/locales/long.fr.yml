@@ -1,0 +1,83 @@
+fr:
+  errors:
+    not_found: |
+      ### Whoops !
+      La page que vous recherchez n'existe pas… ou n'existe plus.
+
+      Pas de soucis, inspirez un bon coup et jetez un œil à nos [forums](%{root}) !
+
+    server_error: |
+      ### Whoops !
+      RubyBB a l'air de buguer :(
+
+      Pas de soucis, inspirez un bon coup et jetez un œil à nos [forums](%{root}) !
+
+  help:
+    sign_up: |
+      ### Première étape : s'inscrire
+      En tant que premier utilisateur inscrit sur ce nouveau forum, vous serez son administrateur.
+      Vous pourrez jouer avec la configuration et tout gérer.
+
+    first_steps: |
+      ### Bon travail !
+      Vous pouvez maintenant jouer avec la [configuration](%{settings}) pour personnaliser votre forum !
+
+      Naviguez, modifiez ou supprimez librement la première catégorie que nous vous avons créé.
+
+    groups: |
+      ### À quoi servent les groupes ?
+      Ils permettent, lors de la création d'une catégorie, topic ou message de décider qui a
+      les droits de lecture, d'écriture et d'administration dessus.
+
+      Il existe deux types de groupes que vous pouvez créer et utiliser :
+
+      * publics, visibles par tous. Exemples : « Modérateurs », « Philatélistes » ;
+      * privés, utilisés pour le tri. Exemples : « Amis », « Connaissances ».
+
+      Dans les deux cas, c'est vous qui gérez les membres de vos groupes.
+
+  home: |
+    ### Hey !
+    Ce forum est vide. [Devenez l'administrateur de %{host}](%{setup}) !
+
+  about: |
+    ### À propos
+    RubyBB est un moteur de forum gratuit et libre.
+    Il est sous [licence BSD-2-clause](https://github.com/RubyBB/RubyBB#bsd-2-clause-license).
+    Vous pouvez au choix l'installer par vous-même ou le créer gratuitement depuis RubyBB.com.
+
+    ### Comment ça fonctionne
+    Allez sur nimportequoi.rubybb.com : ça va créer automatiquement un nouveau forum !
+    Le premier utilisateur inscrit en sera son administrateur.
+    Chaque forum a son propre thème et sa propre base de données d'utilisateurs, catégories, topics et messages.
+    Si vous possédez un nom de domaine, liées cequevousvoulez.votredomaine.com sur [www.rubybb.com](http://www.rubybb.com/) et tout fonctionnera.
+
+    ### Vie privée
+    Vous pouvez supprimer tous ce que vous créez avec RubyBB :
+
+    * en tant qu'utilisateur, supprimez vos commentaires, messages, topics et compte.
+    * en tant qu'administrateur, vous pouvez tout supprimer et accéder à 
+      l'historique des modifications des messages tant que ceux-ci ne sont pas supprimés.
+
+    ### Gestion du spam
+    L'administrateur doit valider le premier message de chaque utilisateur pour que celui-ci continue à poster.
+    Personne ne peut poster plus d'un message ou commentaire toutes les dix secondes.
+
+    ### Fonctionnalités
+    * un espace de commentaire vous attend en dessous de chaque message ;
+    * suivez message/topic/forum/utilisateur pour être notifié en temps réel des informations que vous attendez ;
+    * prévisualisez en temps réel ce que vous écrivez: ce que vous voyez est ce que vous posterez ;
+    * un crash ? ce que vous écrivez est sauvegardé automatiquement pendant que vous tapez ;
+    * un super moteur de recherche : joker, exclusion, phrases, meta-données...
+    * connectez-vous avec Facebook et Google ;
+    * faites des liens automatiquement avec les #hashtags et @utilisateurs ;
+    * renommer une catégorie ou un topic ne cassera rien : les anciens liens redirigeront vers les nouveaux ;
+    * des flux RSS pour chaque catégorie et chaque topic ;
+    * des pièces jointes dans les messages ;
+    * gestion fine des groupes et droits d'accès aux catégories et topics ;
+    * et personnalisez tout avec votre CSS !
+
+    ### Contact
+    Bug, fonctionnalité, aide, question, traduction, encouragements...
+    allez sur le forum [www.rubybb.com](http://www.rubybb.com/),
+    inscrivez-vous et postez : on aime communiquer!

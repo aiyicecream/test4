@@ -1,0 +1,7 @@
+$message = $('#new_small_message-<%= @small_message.message_id %>');
+<% if @small_message.errors.empty? %>
+  $message.before("<%= escape_javascript(render 'show', small_message: @small_message) %>");
+<% else %>
+  $message.find('input').attr('placeholder', 'do not spam').removeAttr('disabled').css('visibility', 'visible')
+  $message.find('.control-group').addClass('error');
+<% end %>

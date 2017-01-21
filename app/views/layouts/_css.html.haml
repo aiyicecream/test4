@@ -1,0 +1,9 @@
+= stylesheet_link_tag "application", :media => "all"
+= stylesheet_link_tag domains_path(format: :css), :media => "all"
+:css
+  .pretty h2, .pretty h3, .icon-bookmark { color: #{@domain.theme}; }
+  #banner { background-color: #{@domain.theme}; }
+  a, .btn-link, .btn-link:hover, .meta a, .user a, a:hover { color: #{@domain.theme}; }
+  .navbar-static-top .navbar-inner { background-color: #{@domain.theme}; }
+  .navbar-static-top .navbar-inner .nav .dropdown-menu a:hover { background-color: #{@domain.theme}; }
+  .navbar .badge-success { color: #{@domain.theme}; }

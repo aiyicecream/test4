@@ -1,0 +1,37 @@
+- content_for :title, t('.title')
+
+%h1
+  = t('.title')
+  %small=link_to t('common.new'), new_group_path if can? :create, Group.new
+
+.widget
+  :markdown
+    #{t('help.groups')}
+
+= paginate @groups
+
+- if @groups.any?
+  %table.table.table-bordered.groups
+    %tr
+      %th= Group.human_attribute_name(:name)
+      %th.infos.number= Group.human_attribute_name(:users_count)
+      %th.infos.number= Group.human_attribute_name(:status)
+      %th.infos.number= t('groups.role')
+      %th.infos
+    - @groups.each do |group|
+      %tr
+        %td= link_to group.name, users_path(group: group)
+        %td.number= group.users_count
+        %td.number= t("groups.status.#{group.status}")
+        %td.number
+          - if group.user_id == current_user.id
+            = t('groups.owner')
+          - elsif group.users.map(&:id).include?(current_user.id)
+            = t('groups.member')
+        %td.number
+          - if can? :manage, group
+            = link_to t('.edit'), edit_group_path(group)
+- else
+  %p.no_results= t('.no_results')
+
+= paginate @groups

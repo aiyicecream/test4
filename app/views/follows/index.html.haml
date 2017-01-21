@@ -1,0 +1,19 @@
+- content_for :title, t('.title')
+
+- @users.each do |user|
+  .span2
+    .widget
+      = username user, short: true
+      = render 'shared/avatar', user: user, size: 40
+      = render 'follows/show', id: user.follow_id, followable_id: user.id, followable_type: 'User'
+
+- if @users.empty?
+  %p.no_results= t('.no_user')
+
+- if @topics.any?
+  .span12
+    %hr
+    = render 'topics/list'
+- else
+  %p.no_results= t('.no_topic')
+

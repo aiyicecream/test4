@@ -1,0 +1,6 @@
+- content_for :title, t('.title')
+%h1= t('.title')
+
+= render 'breadcrumb', forum: @forum, buttons: false
+
+= render 'form'

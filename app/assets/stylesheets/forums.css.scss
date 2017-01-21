@@ -1,0 +1,15 @@
+// Place all the styles related to the Forums controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+tr.tDnD_whileDrag td {
+  background-color: #DFD !important;
+}
+tr td.position { cursor: move; }
+
+/* makes links easier to click */
+td a p {
+  margin: 0px;
+  margin-top: -10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}

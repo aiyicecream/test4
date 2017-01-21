@@ -1,0 +1,9 @@
+- content_for :title, t('.title')
+
+%h1
+  = t('.title')
+  .btn-group
+    = link_to t('.mark_all_as_read'), notifications_path, rel: :nofollow, remote: true, :method => :put, :class => 'btn'
+    = link_to t('.clear'), notifications_path, rel: :nofollow, :method => :delete, :class => 'btn'
+
+= render 'messages/list'

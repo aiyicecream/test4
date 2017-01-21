@@ -1,0 +1,292 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en:
+  search:
+    title: Search
+    find: Find
+    no_results: 'No results have been found.'
+    error: 'Sorry, your query is invalid.'
+
+  date:
+    formats:
+      default: "%Y-%m-%d"
+  time:
+    formats:
+      default: "%Y-%m-%d, %I:%M %p"
+
+  acl:
+    all: All
+    humans: Humans
+    title: 'Access control'
+    hint: 'Keywords: "All", "Humans", user name, group name.'
+
+  common:
+    create: Publish
+    update: Update
+    read: 'read'
+    back: back
+    by: by
+    in: in
+    stats: Stats
+    staff: Staff
+    sysadmin: Sysadmin
+    banned: Banned
+    user: User
+    moderator: Moderator
+    admin: Admin
+    forum: Forum
+    forums: Forums
+    new: New
+    edit: Edit
+    destroy: Destroy
+    pin_on: Pin on
+    pinned: Pinned
+    unpin: Unpin
+    are_you_sure: "Are you sure?"
+    follow: follow
+    remove: "×"
+    unfollow: unfollow
+    na: "not available"
+    topics_count:
+      zero: "%{count} topic"
+      one: "%{count} topic"
+      other: "%{count} topics"
+    messages_count:
+      zero: "%{count} message"
+      one: "%{count} message"
+      other: "%{count} messages"
+
+  layouts:
+    application:
+      powered_by: Powered by
+      about: About
+    navigation:
+      settings: Settings
+      groups: Groups
+      forums: Forums
+      users: Users
+      user: Profile
+      edit: Edit
+      follows: Follows
+      notifications: Notifications
+      favorites: Favorites
+      bookmarks: Bookmarks
+      logout: Logout
+      login: Login
+      sign_up: Register
+    search:
+      title: "Examples"
+      content: "topic:\"%{topic}\"<br>user:%{user} %{word1}<br>forum:%{forum} -%{word2}<br>%{word3}*"
+
+  pages:
+    about:
+      title: À propos
+
+  views:
+    pagination:
+      first: "&laquo;"
+      last: "&raquo;"
+      previous: "&lsaquo;"
+      next: "&rsaquo;"
+      truncate: "..."
+
+  mailer:
+    title: "New message in \"%{topic}\""
+    new_message: "A new message has been posted in \"%{topic}\" by %{user}:"
+    context: "See this message with its context: %{url}"
+    change: "Change notifications settings: %{url}"
+
+  groups:
+    created:
+      public: Public group was successfully created.
+      private: Private group was successfully created.
+    updated: Group was successfully updated.
+    status:
+      private: private
+      public: public
+    role: Role
+    member: member
+    owner: owner
+    index:
+      title: Groups
+      edit: manage
+      no_results: 'No groups have been created yet.'
+    new:
+      title: New group
+    edit:
+      title: Edit group
+
+  domains:
+    updated: Settings were successfully updated.
+    show:
+      title: Settings
+      update: Update
+      more: advanced options...
+    new:
+      welcome: Welcome to the RubyBB forums
+      create: Create
+      about: "Create your own bulletin board by replacing \"www\" by anything you want:"
+      more: It's free and ad-free!
+      available: available !
+      taken: already taken :(
+      format: bad format!
+
+  notifications:
+    index:
+      title: Notifications
+      clear: Clear
+      mark_all_as_read: Mark all as read
+
+  follows:
+    index:
+      title: Follows
+      no_user: You don't follow any user yet.
+      no_topic: You don't follow any topic yet.
+
+  users:
+    gender:
+      male: male
+      female: female
+      other: other
+    index:
+      title: Users
+      age: Age
+    show:
+      stats: Stats
+      graph: Graph
+      admin: Admin
+      more: "(%{a_day} a day, %{total} %)"
+      see_messages: See messages
+      edit: edit
+
+  bookmarks:
+    index:
+      title: Bookmarks
+      clear: Reinit tracking
+
+  forums:
+    example: Demo forum
+    content_example: 'You can edit this description by clicking "Demo forum" and then "Edit".'
+    created: Forum was successfully created.
+    updated: Forum was successfully updated.
+    index:
+      see_also: 'See also:'
+      title: "Forums"
+      users:
+        zero: "%{count} user, "
+        one: "%{count} user, "
+        other: "%{count} users, "
+      online:
+        zero: "%{count} online."
+        one: "%{count} is online:"
+        other: "%{count} are online:"
+      counters: "%{messages} messages in %{topics} topics."
+    show:
+      title: "%{name}"
+    breadcrumb:
+      new_topic: New topic
+    new:
+      title: New forum
+    edit:
+      title: Editing forum
+  topics:
+    example: "Demo topic"
+    created: Topic was successfully created.
+    updated: Topic was successfully updated.
+    show:
+      title: "%{name}"
+    list:
+     new_messages: 'New messages!'
+     topics: Topics
+     messages: Msg
+     follows: Stars
+     views: Views
+     activity: Activity
+     last_page: last page
+    breadcrumb:
+      new_message: Reply
+    new:
+      title: New topic
+    edit:
+      title: Editing topic
+    form:
+      more: access control...
+  small_messages:
+    example: 'Hi! Delete this small message by clicking the cross :)'
+  messages:
+    example: 'Demo message. Click "Edit" on the top to edit topic title, or click "Edit" on the left to edit this content.'
+    created: Message was successfully posted.
+    updated: Message was successfully updated.
+    index:
+      title: Search results
+    show:
+      quote: quote
+      download: "Download attached file: %{name}"
+      use: use this
+      updated_by: "Updated by %{name} at %{date}"
+      bot: "%{name} is a bot"
+      human: "%{name} is a human"
+      i_am_a_bot: "You cannot post anymore: you have to wait someone confirms your account."
+      it_is_a_bot: "%{name} cannot posts anymore: he or she has to wait account confirmation."
+    new:
+      title: New message
+    edit:
+      title: Editing message
+    form:
+      more: options...
+
+  activerecord:
+    models:
+      user: User
+      forum: Forum
+      topic: Topic
+      message: Message
+      group: Group
+    attributes:
+      domain:
+        title: Title
+        description: Description
+        keywords: Keywords
+        banner: Banner
+        url: Url on banner
+        theme: Theme color
+        content: Home content
+        css: CSS
+      forum:
+        name: Title
+        parent: Parent
+        content: Description
+        acl_view: Forum visible
+        acl_read: Topics visible
+        acl_write: Topics creation
+        acl_admin: Moderators
+      topic:
+        name: Title
+        acl_view: Topic visible
+        acl_read: Messages visible
+        acl_write: Messages creation
+        acl_admin: Moderators
+      message:
+        content: Message
+        attachment: Attachment (1 MB)
+      group:
+        name: Name
+        status: Status
+        user_ids: Users
+        users_count: Users
+      user:
+        email: Email
+        password: Password
+        current_password: Current password
+        password_confirmation: Password confirmation
+        name: Name
+        birthdate: Birthdate
+        gender: Gender
+        location: Location
+        website: Website
+        created_at: Joined
+        updated_at: Activity
+        topics_count: Topics
+        messages_count: Messages
+        notify: E-mails

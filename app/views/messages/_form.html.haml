@@ -1,0 +1,16 @@
+= simple_form_for(@message, :url => @message.new_record? ? messages_path(:page => params[:page]) : message_path(@message, :page => params[:page]), :defaults => {:input_html => {:class => 'input-xxlarge'}}, :html => {:class => 'form-horizontal', 'data-persist' => 'garlic'}) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = render 'messages/textarea', f: f
+    = f.input :topic_id, :as => :hidden
+    .expandable
+      .controls.more
+        %a= t('.more')
+      .details
+        = f.input :attachment, :as => :file
+
+  .form-actions
+    = f.button :submit, class: @message.new_record? || @message.user_id == current_user.id ? 'btn-primary' : 'btn-warning', value: @message.new_record? ? t('common.create') : t('common.update')
+    = link_to t('common.destroy'), message_path(@message, page: params[:page]), method: :delete, class: 'btn btn-danger', data: { confirm: t('common.are_you_sure') } if !@message.new_record? && can?(:destroy, @message)
+    = link_to t('common.back'), topic_path(@message.topic, page: params[:page]), :class => 'btn btn-link' unless defined?(back) and !back

@@ -1,0 +1,8 @@
+- if id
+  %p{class: "follow follow-#{followable_type} follow-#{id}"}
+    = link_to follow_path(id, page: params[:page]), method: :delete, rel: :nofollow, remote: true do
+      %i.icon-star{title: t('common.unfollow')}
+- else
+  %p{class: "follow follow-#{followable_type} follow-#{followable_type}-#{followable_id}"}
+    = link_to follows_path(follow: {followable_id: followable_id, followable_type: followable_type}, page: params[:page]), method: :post, rel: :nofollow, remote: true do
+      %i.icon-star-empty{title: t('common.follow')}

@@ -1,0 +1,12 @@
+#wmd-panel
+  #wmd-button-bar
+  = f.input :content, :required => true, :input_html => {:rows => 15, :class => 'input-xxlarge wmd-input', :id => 'wmd-input'}
+%table.table.messages.preview
+  %tr
+    %td.user
+      %p= username current_user
+      %p= render 'shared/avatar', user: current_user, size: 100
+    %td
+      #wmd-preview.wmd-panel.wmd-preview.message.odd
+    %td.ago.hidden-portrait-phone.meta
+      %p{title: l(Time.now)}=time_ago_in_words Time.now

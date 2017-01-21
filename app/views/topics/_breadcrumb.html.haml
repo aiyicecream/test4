@@ -1,0 +1,15 @@
+- if buttons
+  - if !current_user || can?(:create, topic.messages.build)
+    = link_to t('.new_message'), new_message_path(topic_id: topic.id), rel: 'nofollow', class: 'btn in-breadcrumb'
+
+  - if can?(:create, Follow.new)
+    = render 'follows/show', id: topic.follow_id, followable_id: topic.id, followable_type: 'Topic'
+
+%ul.breadcrumb
+  %li
+    = link_to @domain.title, root_path
+    %span.divider /
+  %li
+    = link_to topic.forum.name, forum_path(topic.forum)
+    %span.divider /
+  %li.active= link_to topic.name, topic_path(topic)

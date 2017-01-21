@@ -1,0 +1,27 @@
+- content_for :title, raw(@topic.name)
+= auto_discovery_link_tag(:rss, :format => 'rss')
+
+%h1
+  = t('.title', name: @topic.name)
+  %small= link_to t('common.edit'), edit_topic_path(@topic) if can? :update, @topic
+
+= render 'breadcrumb', topic: @topic, buttons: true
+
+= render 'messages/list'
+
+= render 'breadcrumb', topic: @topic, buttons: true
+
+= render 'messages/form', back: false if can? :create, @message
+
+- if @topic.messages.page.num_pages == [params[:page].to_i, 1].max
+  - content_for :js do
+    = subscribe_to "/topics/#{@topic.id}"
+    :javascript
+      $(document).ready(function() {
+        $notifications = $('#faye-notifications');
+        PrivatePub.subscribe('/topics/#{@topic.id}', function(data) {
+          $.get('/messages/' + data.id, function(data) {
+            $(data).hide().insertAfter($('table.messages:first tr:last')).show('slow');
+          });
+        });
+      });

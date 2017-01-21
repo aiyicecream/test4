@@ -1,0 +1,81 @@
+en:
+  errors:
+    not_found: |
+      ### Whoops!
+      The page you are looking for does not exist (anymore?).
+
+      That's okay, take a breath and look at our [forums](%{root})!
+
+    server_error: |
+      ### Whoops!
+      RubyBB seems to bug :(
+
+      That's okay, take a breath and be helped on our [forums](%{root})!
+
+  help:
+    sign_up: |
+      ### First step: registration
+      As first registered user on this new forum, you will be its administrator.
+      You will be able to play with settings and manage everything.
+
+    first_steps: |
+      ### Good job!
+      You can now play with [settings](%{settings}) to set your forum title and stuff!
+
+      Feel free to browse, edit or delete the first category we created.
+
+    groups: |
+      ### What are groups?
+      They allow you to manage categories, topics and messages access control.
+
+      There are two kinds of groups you can create and use:
+
+      * public, visible by everybody. Examples: « Moderators », « Philatelists »;
+      * private, for users sorting. Examples: « Friends », « Acquaintances ».
+
+      In both cases, you manage members of your groups.
+
+  home: |
+    ### Hey!
+    This forum is empty. [Become %{host} administrator](%{setup})!
+
+  about: |
+    ### About
+    RubyBB is a free bulletin board system.
+    It is released under the [BSD-2-clause license](https://github.com/RubyBB/RubyBB#bsd-2-clause-license).
+    You can either install it by yourself or fire freely your RubyBB through RubyBB.com.
+
+    ### How does it works
+    Go to to anything.rubybb.com: it will magically create a new empty forum!
+    The first registered user will be its administrator.
+    This new forum will have its own theme and its own set of users, categories, topics and messages.
+    You own a domain name? Bind whatever.yourdomain.com to [www.rubybb.com](http://www.rubybb.com/), it will just work.
+
+    ### Privacy
+    You can delete all things you created with RubyBB:
+
+    * as a user, you can delete your messages, comments, topics and account.
+    * as an administrator, you can delete anything and
+      access to the history of messages' edits as long as they are not deleted.
+
+    ### Spam control
+    A user can't post more than one message before the administrator's manual confirmation of its account.
+    Nobody will be able to post more than one message or comment every ten seconds.
+
+    ### Features
+    * comment messages for small talks under each message.
+    * follow message/topic/forum/user to be notified in real-time for news your are waiting for.
+    * preview what your are writing in real-time: what you see is what you post.
+    * browser crash? your message is autosaved while your are tiping.
+    * awesome search engine: wildcard, exclusion, sentences, meta...
+    * log in with Facebook or Google.
+    * autolink things with #hashtag and @username in your messages.
+    * renaming category and topics won't break anything: old links will redirect to the new ones.
+    * RSS in each category and each topic.
+    * add attachments to your messages.
+    * precise groups and access controls management.
+    * and custom your CSS!
+
+    ### Contact
+    Bug report, feature request, help, question, translation, encouragement...
+    Go to the primary [www.rubybb.com](http://www.rubybb.com/) bulletin board, register and post: we enjoy communication!

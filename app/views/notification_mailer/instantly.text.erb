@@ -1,0 +1,9 @@
+<%= raw t('mailer.new_message', topic: @notification.message.topic.name, user: @notification.message.user.name, locale: @notification.user.locale) %>
+
+----------------------------------------------------
+<%= raw truncate(@notification.message.content, length: 1024, separator: ' ', omission: '...') %>
+----------------------------------------------------
+
+<%= raw t('mailer.context', url: topic_url(@notification.message.topic, host: @notification.message.domain.name) + "?goto=#{@notification.message.id}", locale: @notification.user.locale) %>
+
+<%= raw t('mailer.change', url: edit_user_registration_url(host: @notification.message.domain.name), locale: @notification.user.locale) %>

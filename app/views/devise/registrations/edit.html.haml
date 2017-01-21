@@ -1,0 +1,25 @@
+- content_for :title, t('.my_profile')
+%h2= t('.my_profile')
+= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { autocomplete: 'off', :class => 'form-horizontal', :method => :put }) do |f|
+  = f.error_notification
+  .form-inputs
+    .controls
+      = render 'shared/avatar', user: current_user, size: 100
+    = f.input :avatar, :as => :file
+    = f.input :location, :input_html => {:maxlength => 24}
+    = f.input :website, :as => :url, :input_html => {:maxlength => 255}
+    = f.input :birthdate, :start_year => Date.today.year - 100, :end_year => Date.today.year, :include_blank => true, :input_html => {:class => 'input-medium'}
+    = f.input :gender, :collection => %w[male female other].map{|s| [t("users.gender.#{s}"), s]}
+    = f.input :notify, :hint => t('.notify')
+    .expandable
+      .controls.more
+        %a= t('.more')
+      .details
+        = f.input :name, :required => true, :input_html => {:maxlength => 24}
+        = f.input :email, :required => true
+        = f.input :current_password, :hint => t('.we_need_your_current_password_to_confirm_your_changes'), :required => true
+        = f.input :password, :label => t('.new_password'), :autocomplete => "off", :hint => t('.leave_blank_if_you_don_t_want_to_change_it'), :required => false
+        = f.input :password_confirmation, :required => false
+  .form-actions
+    = f.button :submit, t('.update'), :class => 'btn btn-primary'
+    = link_to t('.cancel_my_account'), registration_path(resource_name), :data => { :confirm => t('.are_you_sure') }, :method => :delete, :class => 'btn btn-danger'

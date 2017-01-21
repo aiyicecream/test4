@@ -1,0 +1,14 @@
+- content_for :title, t('.title')
+%h1= t('.title')
+
+= render 'topics/breadcrumb', topic: @message.topic, buttons: false
+
+= render 'form'
+
+- if can?(:history, @message) && @message.versions.any?
+  %hr
+  %table.table.messages
+    - if @message.versions.count > 1
+      - @message.versions.includes(:item).each do |v|
+        = render 'show', message: v.reify if v.reify
+    = render 'show', message: @message

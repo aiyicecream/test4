@@ -1,0 +1,27 @@
+- content_for :title, t('.title')
+%h2= t('.title')
+
+= simple_form_for(@domain, :url => request.path, :defaults => {:input_html => {:class => 'input-xxlarge'}}, :html => {:class => 'form-horizontal', :method => 'put'}) do |f|
+  = f.error_notification
+  .form-inputs
+    = f.input :title, :input_html => {:maxlength => 24}
+    = f.input :description, :input_html => {:maxlength => 255}
+    = f.input :keywords, :input_html => {:maxlength => 255}
+    - if @domain.banner.exists?
+      .controls.banner
+        = image_tag @domain.banner.url, style: 'max-height: 50px;'
+        = link_to '×', domain_banner_path, method: :delete, remote: true
+    = f.input :banner, :as => :file
+    = f.input :url, :input_html => {:maxlength => 255, :placeholder => 'http://'}
+    = f.input :theme, :input_html => {:type => :color}
+    #wmd-panel
+      #wmd-button-bar
+      = f.input :content, :input_html => {:class => 'wmd-input input-xxlarge', :id => 'wmd-input'}
+    .expandable
+      .controls.more
+        %a= t('.more')
+      .details
+        = f.input :css
+  .form-actions
+    = f.button :submit, t('.update'), :class => 'btn btn-warning'
+    = link_to t('common.back'), root_path, :class => 'btn btn-link'

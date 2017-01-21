@@ -1,0 +1,13 @@
+- if buttons
+  - if !current_user || can?(:create, forum.topics.build)
+    = link_to t('.new_topic'), new_topic_path(forum_id: forum.id), rel: 'nofollow', class: 'btn in-breadcrumb'
+
+  - if can? :create, Follow.new
+    = render 'follows/show', id: forum.follow_id, followable_id: forum.id, followable_type: 'Forum'
+
+%ul.breadcrumb
+  %li
+    = link_to @domain.title, root_path
+    %span.divider /
+  %li.active
+    = link_to forum.name, forum_path(forum)

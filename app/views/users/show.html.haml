@@ -1,0 +1,119 @@
+- content_for :title, raw(@user.name)
+
+.span4
+  .widget
+    %h1= username @user
+    %p
+      = render 'shared/avatar', user: @user, size: 100
+    %p
+      %b= "#{User.human_attribute_name(:location)}:"
+      - if @user.location.present?
+        = @user.location
+      - else
+        %i= t('common.na')
+
+    %p
+      %b= "#{User.human_attribute_name(:birthdate)}:"
+      - if @user.birthdate.present?
+        = l @user.birthdate
+      - else
+        %i= t('common.na')
+
+    %p
+      %b= "#{User.human_attribute_name(:gender)}:"
+      - if @user.gender.present?
+        = t("users.gender.#{@user.gender}")
+      - else
+        %i= t('common.na')
+
+    - if @user.website.present?
+      %p
+        %b= "#{User.human_attribute_name(:website)}:"
+        = link_to @user.website, @user.website, :rel => :nofollow
+    - if @user.id == current_user.try(:id)
+      %p
+        = link_to t('.edit'), edit_user_registration_path
+    - if can?(:create, Follow.new) && current_user.try(:id) != @user.id
+      = render 'follows/show', id: @user.follow_id, followable_id: @user.id, followable_type: 'User'
+
+.span4
+  .widget
+    %h1= t('.stats')
+    - [:topics_count, :messages_count].each do |a|
+      %p
+        %b= "#{User.human_attribute_name(a)}:"
+        = @user.send(a)
+        %small= t('.more',
+          a_day: (@user.send(a).to_f * 1.day / (Time.now - @user.created_at)).round(2), 
+          total: (@user.send(a).to_f * 100 / Message.count).round(2))
+    - [:updated_at, :created_at].each do |a|
+      %p
+        %b= "#{User.human_attribute_name(a)}:"
+        = l @user.send(a)
+    %p= link_to t('.see_messages'), messages_path(q: "user:#{@user.name}")
+
+.span4
+  .widget
+    %h1= t('.graph')
+    #container
+
+- content_for :js do
+  :javascript
+    $(function () {
+        var chart;
+        $(document).ready(function() {
+            chart = new Highcharts.Chart({
+                chart: {
+                    renderTo: 'container',
+                    backgroundColor: null,
+                    type: 'spline',
+                    zoomType: 'x'
+                },
+                title: {
+                    text: ''
+                },
+                xAxis: {
+                    type: 'datetime',
+                    maxZoom: 7 * 24 * 3600000
+                },
+                yAxis: [{
+                    title: {
+                        text: 'Messages',
+                        style: {color: '#4572A7'}
+                    },
+                    labels: {
+                        style: {color: '#4572A7'}
+                    },
+                    min: 0
+                }, {
+                    opposite: true,
+                    title: {
+                        text: 'Follows',
+                        style: {color: '#AA4643'}
+                    },
+                    labels: {
+                        style: {color: '#AA4643'}
+                    },
+                    min: 0
+                }],
+                tooltip: {
+                    formatter: function() {
+                            return '<b>'+ this.series.name +'</b><br/>'+
+                            Highcharts.dateFormat('%Y-%m-%d', this.x) +': '+ this.y;
+                    }
+                },
+                legend: {
+                    enabled: false
+                },
+                series: [{
+                    name: 'Messages',
+                    yAxis: 0,
+                    data: #{@graph_messages.to_json}
+                }, {
+                    name: 'Follows',
+                    yAxis: 1,
+                    data: #{@graph_follows.to_json}
+                }]
+            });
+        });
+    });

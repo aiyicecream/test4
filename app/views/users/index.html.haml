@@ -1,0 +1,38 @@
+- content_for :title, t('.title')
+
+%h1= t('.title')
+
+= paginate @users
+
+%table.table.table-bordered.users
+  %tr
+    %th= sortable User, :name
+    %th.number= sortable User, :birthdate, t('.age')
+    %th= sortable User, :gender
+    %th.hidden-phone= sortable User, :location
+    %th.hidden-phone= sortable User, :website
+    %th.number.hidden-phone= sortable User, :topics_count
+    %th.number= sortable User, :messages_count
+    %th.hidden-phone.hidden-tablet= sortable User, :created_at
+    %th= sortable User, :updated_at
+
+  - @users.each do |user|
+    %tr
+      %td
+        = render 'shared/avatar', user: user, size: 40
+        = username user
+      %td.number
+        = user.age if user.birthdate.present?
+      %td
+        = t("users.gender.#{user.gender}") if user.gender.present?
+      %td.hidden-phone
+        = user.location if user.location.present?
+      %td.url.hidden-phone
+        = link_to user.website, user.website, rel: :nofollow if user.website.present?
+      %td.number.hidden-phone= user.topics_count
+      %td.number= user.messages_count
+      %td.hidden-phone.hidden-tablet= l user.created_at.to_date
+      %td
+        %span{title: l(user.updated_at)}= time_ago_in_words user.updated_at
+
+= paginate @users

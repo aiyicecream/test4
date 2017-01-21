@@ -1,0 +1,39 @@
+!!!
+%html{lang: I18n.locale}
+  %head
+    %meta{:charset => "utf-8"}
+    %meta{:name => "viewport", :content => "width=device-width, initial-scale=1, maximum-scale=1"}
+    %title= content_for?(:title) ? "#{yield(:title)} - #{@domain.title}" : @domain.title
+    %meta{:content => @domain.description, :name => "description"}
+    %meta{:content => @domain.keywords, :name => "keywords"}
+    - if @domain.users_count == 0
+      %meta{:content => 'noindex, nofollow', :name => "robots"}
+    = favicon_link_tag '/ruby.png', rel: 'image_src', :type => 'image/png'
+    = csrf_meta_tags
+    = yield(:head)
+    = render 'layouts/css'
+  %body
+    #banner
+      .container
+        - if @domain.banner.exists?
+          = link_to @domain.url.present? ? @domain.url : root_path do
+            = image_tag @domain.banner.url
+    %header.navbar.navbar-static-top
+      %nav.navbar-inner
+        .container
+          = render 'layouts/navigation'
+    .container
+      = render 'layouts/messages'
+      .row
+        - if @widgets_mode || params[:controller] == 'high_voltage/pages'
+          = yield
+        - else
+          .span12
+            = yield
+    %footer.footer
+      .container
+        = t('.powered_by')
+        = link_to 'RubyBB', 'http://www.rubybb.com'
+        © 2012 –
+        = link_to t('.about'), static_path('about', host: 'www.rubybb.com', :only_path => false)
+    = render 'layouts/js'

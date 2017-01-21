@@ -1,0 +1,13 @@
+# Additional translations at https://github.com/plataformatec/devise/wiki/I18n
+
+fr:
+  devise:
+    sessions:
+      new:
+        email_or_name: Email ou nom
+    registrations:
+      edit:
+        my_profile: Mon profil
+        more: 'modifier mon nom, email ou mot de passe...'
+        update: Mettre à jour
+        new_password: Nouveau mot de passe

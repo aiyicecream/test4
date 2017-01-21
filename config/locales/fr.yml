@@ -1,0 +1,291 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+fr:
+  search:
+    title: Recherche
+    find: Go
+    no_results: "Aucun résultat n'a été trouvé."
+    error: 'La requête est invalide.'
+
+  date:
+    formats:
+      default: "%Y-%m-%d"
+  time:
+    formats:
+      default: "%Y-%m-%d, %H:%M"
+
+  acl:
+    all: Tous
+    humans: Humains
+    title: 'Contrôle d''accès'
+    hint: 'Mots-clés : "Tous", "Humains", nom d''utilisateur, nom de groupe.'
+
+  common:
+    create: Publier
+    update: Mettre à jour
+    read: lire
+    back: retour
+    by: par
+    in: dans
+    stats: Stats
+    staff: Staff
+    sysadmin: Sysadmin
+    banned: Banni
+    user: Utilisateur
+    moderator: Moderateur
+    admin: Admin
+    forum: Forum
+    forums: Forums
+    new: Nouveau
+    edit: modifier
+    destroy: Supprimer
+    pin_on: Épingler
+    pinned: Épinglé
+    unpin: "Retirer l'épingle"
+    are_you_sure: "Êtes-vous sûr ?"
+    follow: suivre
+    remove: "×"
+    unfollow: stop
+    na: "non disponible"
+    topics_count:
+      zero: "%{count} topic"
+      one: "%{count} topic"
+      other: "%{count} topics"
+    messages_count:
+      zero: "%{count} message"
+      one: "%{count} message"
+      other: "%{count} messages"
+
+  layouts:
+    application:
+      powered_by: Propulsé par
+      about: À propos
+    navigation:
+      settings: Configuration
+      groups: Groupes
+      forums: Forums
+      users: Utilisateurs
+      user: Profil
+      edit: Mettre à jour
+      follows: Suivis
+      notifications: Notifications
+      favorites: Favoris
+      bookmarks: Marque-pages
+      logout: Déconnexion
+      login: Connexion
+      sign_up: Inscription
+    search:
+      title: "Exemples"
+
+  pages:
+    about:
+      title: About
+
+  views:
+    pagination:
+      first: "&laquo;"
+      last: "&raquo;"
+      previous: "&lsaquo;"
+      next: "&rsaquo;"
+      truncate: "..."
+
+  mailer:
+    title: "Nouveau message dans \"%{topic}\""
+    new_message: "Un nouveau message a été posté dans \"%{topic}\" par %{user} :"
+    context: "Voir ce message dans son contexte : %{url}"
+    change: "Modifier les paramètres de notifications : %{url}"
+
+  groups:
+    created:
+      public: Le groupe public a été créé avec succès.
+      private: Le groupe privé a été créé avec succès.
+    updated: Le groupe a été mis à jour avec succès.
+    status:
+      private: privé
+      public: public
+    role: Role
+    member: membre
+    owner: propriétaire
+    index:
+      title: Groupes
+      edit: gérer
+      no_results: "Aucun groupe n'a encore été créé."
+    new:
+      title: Nouveau groupe
+    edit:
+      title: Gestion du groupe
+
+  domains:
+    updated: La configuration a été mise à jour avec succès.
+    show:
+      title: Configuration
+      update: Mettre à jour
+      more: options avancées...
+    new:
+      welcome: Bienvenue sur les forums RubyBB
+      create: Créer
+      about: "Créez votre propre forum de discussion en remplaçant le « www » par ce que vous voulez :"
+      more: C'est gratuit et sans pub !
+      available: disponible !
+      taken: déjà pris :(
+      format: mauvais format !
+
+  notifications:
+    index:
+      title: Notifications
+      clear: Vider
+      mark_all_as_read: Tout marquer comme lu
+
+  follows:
+    index:
+      title: Suivis
+      no_user: Vous ne suivez encore aucun utilisateur.
+      no_topic: Vous ne suivez encore aucun sujet.
+
+  users:
+    gender:
+      male: masculin
+      female: féminin
+      other: autre
+    index:
+      title: Utilisateurs
+      age: Âge
+    show:
+      stats: Stats
+      graph: Graphique
+      admin: Admin
+      more: "(%{a_day} par jour, %{total} %)"
+      see_messages: Voir les messages
+      edit: Mettre à jour
+
+  bookmarks:
+    index:
+      title: Marque-pages
+      clear: Réinitialiser les suivis
+
+  forums:
+    example: "Forum d'exemple"
+    content_example: "Vous pouvez modifier cette description en cliquant sur « Forum d'exemple » puis « Modifier »"
+    created: Le forum a été créé avec succès.
+    updated: Le forum a été mis à jour avec succès.
+    index:
+      see_also: 'Voir aussi :'
+      title: "Forums"
+      users:
+        zero: "%{count} utilisateur, "
+        one: "%{count} utilisateur, "
+        other: "%{count} utilisateurs, "
+      online:
+        zero: "%{count} en ligne."
+        one: "%{count} en ligne :"
+        other: "%{count} en ligne :"
+      counters: "%{messages} messages dans %{topics} topics."
+    show:
+      title: "%{name}"
+    breadcrumb:
+      new_topic: Nouveau topic
+    new:
+      title: Nouveau forum
+    edit:
+      title: Modification du forum
+  topics:
+    example: "Topic d'exemple"
+    created: Le topic a été créé avec succès.
+    updated: Le topic a été mis à jour avec succès.
+    show:
+      title: "%{name}"
+    list:
+     new_messages: 'New messages!'
+     topics: Topics
+     messages: Msg
+     follows: Étoiles
+     views: Vues
+     activity: Activité
+     last_page: dernière page
+    breadcrumb:
+      new_message: Répondre
+    new:
+      title: Nouveau topic
+    edit:
+      title: Modification du topic
+    form:
+      more: contrôle d'accès...
+  small_messages:
+    example: "Hey ! Supprime ce petit message en cliquant sur la croix :)"
+  messages:
+    example: "Message d'exemple. Cliquez sur « Modifier » en haut pour modifier le titre du topic, ou cliquez sur « Modifier » à gauche pour modifier ce contenu."
+    created: Le message a été posté avec succès.
+    updated: Le message a été mis à jour avec succès.
+    index:
+      title: Résultats de la recherche
+    show:
+      quote: citation
+      download: "Télécharger le fichier joint : %{name}"
+      use: citer
+      updated_by: "Modifié par %{name} le %{date}"
+      bot: "%{name} est un robot"
+      human: "%{name} est un humain"
+      i_am_a_bot: "Vous ne pouvez plus poster : vous devez attendre l'approbation de quelqu'un avant de continuer."
+      it_is_a_bot: "%{name} ne peut plus poster : son compte n'a pas encore été approuvé."
+    new:
+      title: Nouveau message
+    edit:
+      title: Modification du message
+    form:      
+      more: options...
+
+  activerecord:
+    models:
+      user: Utilisateur
+      forum: Forum
+      topic: Topic
+      message: Message
+      group: Groupe
+    attributes:
+      domain:
+        title: Titre
+        description: Description
+        keywords: Mots-clés
+        banner: Bannière
+        url: Lien sur la bannière
+        theme: Couleur thème
+        content: "Contenu de l'accueil"
+        css: CSS
+      forum:
+        name: Titre
+        parent: Parent
+        content: Description
+        acl_view: Forum visible
+        acl_read: Topics visibles
+        acl_write: Topics créables
+        acl_admin: Modérateurs
+      topic:
+        name: Titre
+        acl_view: Topic visible
+        acl_read: Messages visibles
+        acl_write: Messages créables
+        acl_admin: Modérateurs
+      message:
+        content: Message
+        attachment: Fichier joint (1 Mo)
+      group:
+        name: Nom
+        status: Statut
+        user_ids: Utilisateurs
+        users_count: Utilisateurs
+      user:
+        email: Email
+        password: Mot de passe
+        current_password: Mot de passe actuel
+        password_confirmation: Confirmation du mot de passe
+        name: Nom
+        birthdate: Date de naissance
+        gender: Genre
+        location: Localisation
+        website: Site web
+        created_at: Inscrit le
+        updated_at: Activité
+        topics_count: Topics
+        messages_count: Messages
+        notify: E-mails

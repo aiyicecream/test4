@@ -1,0 +1,12 @@
+- content_for :title, t('.title')
+.span4.pretty
+  :markdown
+    #{t('about')}
+.span8
+  %ul.thumbnails
+    - %w[administration admin_home follows_list use_tags a_notification notifications search_and_find topics_list small_talks a_profile users_list inception].each do |img|
+      %li.span4
+        = link_to "/screenshots/#{img}.png", :class => 'thumbnail' do
+          = image_tag "/screenshots/#{img}.png"
+        .caption
+          = img.capitalize.gsub('_', ' ')

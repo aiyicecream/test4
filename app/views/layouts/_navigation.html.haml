@@ -1,0 +1,31 @@
+%a.btn.btn-navbar{data: {toggle: 'collapse', target: '.nav-collapse'}}
+  .icon-bar
+  .icon-bar
+  .icon-bar
+= link_to @domain.title, root_path, :class => 'brand'
+- unless @domain.users_count == 0
+  .nav-collapse.collapse
+    %ul.nav
+      %li= link_to t('.users'), users_path
+      - if user_signed_in?
+        %li
+          = link_to notifications_path do
+            = t('.notifications')
+            %span.badge.badge-success#faye-notifications{class: current_user.notifications_count <= 0 && 'hidden'}= current_user.notifications_count
+        %li.dropdown
+          = link_to '#', :class => 'dropdown-toggle', 'data-toggle' => 'dropdown' do
+            = current_user.name
+            %b.caret
+          %ul.dropdown-menu
+            %li= link_to t('.user'), user_path(current_user)
+            %li= link_to t('.edit'), edit_user_registration_path
+            %li= link_to t('.follows'), follows_path
+            %li= link_to t('.groups'), groups_path
+            %li= link_to t('.logout'), destroy_user_session_path, :method=>'delete'
+        - if current_user.sysadmin?
+          %li= link_to t('.settings'), admin_path
+      - else
+        %li= link_to t('.sign_up'), new_user_registration_path
+        %li= link_to t('.login'), new_user_session_path
+    - if current_user
+      = render 'layouts/search'

@@ -1,0 +1,2 @@
+- cache "domain-#{@domain.id}-#{@domain.updated_at}-css" do
+  = @domain.css.gsub(/\{([^}]*)\}/m){ '{' + ActionController::Base.helpers.sanitize_css($1) + '}'; }

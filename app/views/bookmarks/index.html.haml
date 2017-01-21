@@ -1,0 +1,9 @@
+- content_for :title, t('.title')
+
+%h1
+  = t('.title')
+  .btn-group
+    = link_to t('notifications.index.mark_all_as_read'), bookmarks_path, rel: :nofollow, :method => :put, :class => 'btn'
+    = link_to t('.clear'), bookmarks_path, rel: :nofollow, :method => :delete, :class => 'btn'
+
+= render 'topics/list'

@@ -1,0 +1,1 @@
+$('.controls.banner').hide('slow');

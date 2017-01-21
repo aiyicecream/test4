@@ -1,0 +1,53 @@
+- if @domain.users_count == 0 && @forums.empty?
+  .widget
+    :markdown
+      #{t('home', host: request.host, setup: new_user_registration_path)}
+
+- else
+  - if @domain.content == '{{rubybb}}'
+    = render 'domains/new'
+  - elsif @domain.content.present?
+    .widget
+      = raw @domain.rendered_content
+  - elsif @domain.title_was.blank?
+    .alert.alert-success
+      :markdown
+        #{t('help.first_steps', settings: admin_path, forum: new_forum_path)}
+
+  %h1
+    = t('common.forums')
+    %small=link_to t('common.new'), new_forum_path if can? :create, Forum.new
+
+  %table.table.table-bordered{id: can?(:position, Forum) ? 'forums' : nil}
+    %tbody
+      - @forums.each do |forum|
+        - if can? :read, forum
+          %tr{id: forum.id}
+            - if can? :position, forum
+              %td.position
+                ☰
+            - cache "forum-v2-#{forum.id}-#{forum.updated_at}-#{forum.last_message_id}" do
+              %td
+                = link_to forum, :class => :title do
+                  %p
+                    %strong= forum.name
+                - if forum.children.any?
+                  %p
+                    =raw forum.children.map{|f| link_to f.name, forum_path(f) if can? :read, f}.reject(&:nil?).join(', ')
+                - if forum.content.present?
+                  %p= forum.content
+              %td.infos.hidden-phone
+                %p= t('common.topics_count', count: forum.topics_count)
+                %p= t('common.messages_count', count: forum.messages_count)
+              %td.infos.hidden-portrait-phone
+                - if forum.last_message
+                  %p= l forum.last_message.updated_at, format: :short
+                  %p
+                    = t('common.by')
+                    = username forum.last_message.user
+  .widget
+    %h4= t('common.stats')
+    %p= t('.counters', topics: @domain.topics_count, messages: @domain.messages_count)
+    %p
+      = "#{t('.users', count: @domain.users_count)}#{t('.online', count: @users.count)}"
+      = raw @users.map{|u| username u}.join(', ')

@@ -1,0 +1,16 @@
+- if @domain.users_count == 0
+  .widget
+    :markdown
+      #{t('help.sign_up')}
+- else
+  %h2= t('.sign_up')
+= simple_form_for(resource, :as => resource_name, :html => {:class => 'form-horizontal' }, :url => registration_path(resource_name)) do |f|
+  = f.error_notification
+  .form-inputs
+    = f.input :name, :required => true, :autofocus => true, :input_html => {:maxlength => 24}
+    = f.input :email, :required => true
+    = f.input :password, :required => true
+    = f.input :password_confirmation, :required => true
+  .form-actions
+    = f.button :submit, t('.sign_up')
+= render "devise/shared/links"

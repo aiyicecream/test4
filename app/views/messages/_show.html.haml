@@ -1,0 +1,49 @@
+%tr{class: "#{@folded ? 'folded' : nil} #{(@as_notifications && !message.notification_read?) || @unread ? 'unread' : nil}"}
+  %td.user
+    %a{name: "m#{message.id}"}
+    %p= username message.user
+    %p
+      = render 'shared/avatar', user: message.user, size: 100
+  %td
+    - if @meta
+      .meta
+        %p.search= link_to message.topic.name, topic_path(message.topic)
+    .message{ class: cycle('odd', 'even') }
+      = raw message.rendered_content
+      - if message.attachment.present?
+        %p
+          %em= link_to t('.download', name: message.attachment.instance_read(:file_name)), message.attachment.url
+      - if message.user && !message.user.human?
+        - if can?(:bot, message.user)
+          = form_for message.user, url: bot_user_path(message.user, topic_id: message.topic_id) do |f|
+            = f.submit t('.bot', name: message.user.name), name: 'bot', class: 'btn btn-danger'
+            = f.submit t('.human', name: message.user.name), name: 'human', class: 'btn btn-success'
+        - elsif message.user_id == current_user.try(:id)
+          %p
+            %em= t('.i_am_a_bot')
+        - else
+          %p
+            %em= t('.it_is_a_bot', name: message.user.name)
+    .meta
+      - if message.updater && (message.updater_id != message.user_id || message.updated_at - 5.minutes > message.created_at)
+        %p.date= t('.updated_by', name: message.updater.name, date: l(message.updated_at))
+      - unless @history
+        .small_messages
+          - message.small_messages.each do |small_message|
+            = render 'small_messages/show', small_message: small_message
+          - if can? :create, sm = message.small_messages.build
+            = simple_form_for sm, remote: true, html: { id: "new_small_message-#{message.id}" } do |f|
+              = f.input :content
+              = f.input :message_id, as: :hidden
+              = f.submit value: t('common.create'), class: 'hidden'
+  %td.ago.hidden-portrait-phone.meta
+    - if @as_notifications
+      %p= link_to t('common.remove'), notification_path(message.notification_id), method: :delete, rel: :nofollow, remote: true, class: 'delete_notification'
+      - if !message.notification_read?
+        %p.hidden= link_to t('common.read'), notification_path(message.notification_id), method: :put, rel: :nofollow, remote: true, class: 'read_notification'
+    %p{title: l(message.created_at)}= time_ago_in_words message.created_at
+    - if !@as_notifications && message.user && can?(:create, @message)
+      %p.quote-that.btn-link{'data-user' => message.user.name, 'data-content' => message.content}= t('.quote')
+    - if @history
+      %p.use-that.btn-link{'data-content' => message.content}= t('.use')
+    %p.action= link_to t('common.edit'), edit_message_path(message, page: params[:page]) if can? :update, message

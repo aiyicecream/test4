@@ -1,0 +1,18 @@
+= simple_form_for(@forum, :defaults => {:input_html => {:class => 'input-xxlarge'}}, :html => {:class => 'form-horizontal' }) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name, :required => true, :input_html => {:maxlength => 64}
+    = f.association :parent, :collection => Forum.where(:parent_id => nil)
+    = f.input :content, :input_html => {:rows => 5}
+    = field_set_tag t('acl.title') do
+      .controls.help-block= t('acl.hint')
+      = f.input :acl_view, :input_html => {'data-token' => true, 'data-prepopulate' => @forum.prePopulate('view')}
+      = f.input :acl_read, :input_html => {'data-token' => true, 'data-prepopulate' => @forum.prePopulate('read')}
+      = f.input :acl_write, :input_html => {'data-token' => true, 'data-prepopulate' => @forum.prePopulate('write')}
+      = f.input :acl_admin, :input_html => {'data-token' => true, 'data-prepopulate' => @forum.prePopulate('admin')}
+
+  .form-actions
+    = f.button :submit, class: 'btn-warning', value: @forum.new_record? ? t('common.create') : t('common.update')
+    = link_to t('common.destroy'), @forum, method: :delete, class: 'btn btn-danger', data: { confirm: t('common.are_you_sure') } if !@forum.new_record? && can?(:destroy, @forum)
+    = link_to t('common.back'), @forum.new_record? ? forums_path : forum_path(@forum), :class => 'btn btn-link'

@@ -1,0 +1,3 @@
+- flash.each do |name, msg|
+  - if msg.is_a?(String)
+    = js add_gritter(msg, :image => name == :notice ? "success" : "error", :title => name == :notice ? t('gflash.titles.success') : t('gflash.titles.error'))

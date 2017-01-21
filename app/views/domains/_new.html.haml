@@ -1,0 +1,49 @@
+.hero-unit.create
+  %h2= t('.welcome')
+  %form.form-inline
+    .control-group
+      %controls
+        .input-prepend.input-append
+          %label.add-on{for: 'slug'}
+            %i.icon-globe
+            http://
+          %input.input-medium{id: 'slug', type: 'text', maxlength: 63}
+          .add-on= ".#{request.domain}"
+        %button.btn.btn-large{disabled: 'disabled'}= t('.create')
+        .help-inline
+  %p= t('.about')
+  %p= link_to t('.more'), static_path('about', host: 'www.rubybb.com', :only_path => false)
+
+- content_for :js do
+  :javascript
+    $(document).ready(function() {
+      $input = $('.create input');
+      $group = $('.create .control-group');
+      $button = $('.create button');
+      $help = $('.create .help-inline');
+      function createDomainError(msg) {
+        $group.removeClass('success')
+        $button.attr('disabled', 'disabled');
+        if ($input.val()) {
+          $group.addClass('error');
+          $help.html(msg);
+        } else $help.html('');
+      }
+      $('.create input').keyup(function() {
+        slug = $input.val().latinise().toLowerCase().replace(/[^a-z0-9-_.]/g, '-');
+        if (slug != $input.val()) $input.val(slug);
+        if (slug.match(/^[a-z0-9]$/) || slug.match(/^[a-z0-9][a-z0-9-_.]{0,61}[a-z0-9]$/)) {
+          $.get('check?q=' + slug, function(data) {
+            if (data) {
+              $group.removeClass('error').addClass('success');
+              $button.removeAttr('disabled');
+              $help.html("#{t('.available')}");
+            } else createDomainError("#{t('.taken')}");
+          });
+        } else createDomainError("#{t('.format')}");
+      });
+      $('.create form').submit(function(e){
+        e.preventDefault();
+        document.location = 'http://' + $('.create input').val() + '.#{request.domain}/register';
+      });
+    });

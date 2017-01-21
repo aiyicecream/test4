@@ -1,0 +1,15 @@
+-# cache "forum-#{@forum.id}-topics-page#{params[:page]}-#{current_user.try(:role, @forum.id)||'anon'}-#{@forum.updated_at}" do
+- if true
+
+  - content_for :title, raw(@forum.name)
+  = auto_discovery_link_tag(:rss, :format => 'rss')
+
+  %h1
+    = t('.title', name: @forum.name)
+    %small= link_to t('common.edit'), edit_forum_path(@forum) if can? :update, @forum
+
+  = render 'breadcrumb', forum: @forum, buttons: true
+
+  = render 'topics/list'
+
+  = render 'breadcrumb', forum: @forum, buttons: true

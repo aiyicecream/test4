@@ -1,0 +1,115 @@
+@import "bootstrap";
+@import "bootstrap-responsive";
+
+.alert, .widget {
+  h2, h3 {
+    margin-top: 0;
+    line-height: 1em;
+  }
+  h4 { margin-top: 0; }
+}
+td, .alert, .widget {
+  p:last-child {
+    margin-bottom: 0;
+  }
+}
+
+label.add-on { margin-bottom: 0; }
+.pagination { height: 34px; }
+.pagination ul > li > a, .pagination ul > li > span { padding: 4px 14px; line-height: 24px; }
+footer { margin: 40px 0; text-align: center; font-size: 90%; }
+blockquote { margin: 0 0 10px; }
+blockquote p { font-size: 13px; }
+.navbar { margin-bottom: 20px; }
+hr { clear: both; margin-top: 0; border-bottom: 1px #EEE solid;}
+
+.navbar-static-top .navbar-inner {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background: none;
+  filter: none;
+  color: #000;
+  border: 0;
+  box-shadow: none;
+  .brand, .nav li a {
+    color: #fff !important;
+    text-shadow: none;
+  }
+  @media (max-width: 767px) {
+    .in.collapse .nav .dropdown-menu a {
+      color: #fff !important;
+    }
+  }
+  @media (min-width: 768px) {
+    .nav .dropdown-menu a {
+      color: #000 !important;
+    }
+  }
+}
+
+
+.nav-collapse .navbar-search {
+  padding: 0 15px;
+  border: 0;
+  box-shadow: none;
+}
+
+.navbar .btn,
+.navbar .btn-navbar:hover,
+.navbar .btn-navbar:active,
+.navbar .btn-navbar.active,
+.navbar .btn-navbar.disabled,
+.navbar .btn-navbar[disabled],
+.navbar .btn-nav-bar {
+  background: none !important;
+}
+
+.nav-collapse .nav > li > a:hover,
+.nav-collapse .dropdown-menu a:hover {
+  background-color: transparent;
+}
+
+.navbar .nav li.dropdown.open > .dropdown-toggle,
+.navbar .nav li.dropdown.active > .dropdown-toggle,
+.navbar .nav li.dropdown.open.active > .dropdown-toggle {
+  background-color: transparent;
+}
+
+.navbar-static-top .navbar-inner .nav .dropdown-menu a {
+  color: #000 !important;
+}
+
+.navbar-static-top .navbar-inner .nav .dropdown-menu a:hover {
+  color: #fff !important;
+  background: none;
+  filter: none;
+}
+
+.navbar .badge-success {
+  background-color: #fff;
+}
+
+.navbar .nav li.dropdown > a:hover .caret,
+.navbar .nav li.dropdown.open > .dropdown-toggle .caret,
+.navbar .nav li.dropdown.active > .dropdown-toggle .caret,
+.navbar .nav li.dropdown.open.active > .dropdown-toggle .caret,
+.navbar .nav li.dropdown > .dropdown-toggle .caret {
+  border-top-color: #fff;
+  border-bottom-color: #fff;
+}
+
+.form-actions {
+  border-top-color: #e5e5e5;
+  background-color: #f9f9f9;
+}
+
+.table-bordered {
+  background-color: #f9f9f9;
+  border: 1px #ddd solid;
+  th, td {
+    border-left: 0;
+  }
+  th {
+    background-color: #eee;
+  }
+}

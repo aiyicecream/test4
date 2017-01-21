@@ -1,0 +1,16 @@
+= javascript_include_tag "application"
+
+= yield :js
+
+- if can? :read, Notification.new
+  = subscribe_to "/users/#{current_user.id}"
+  :javascript
+    function link_to(text, href){ return '<a href="'+href+'">'+text+'</a>'; }
+    $(document).ready(function() {
+      $notifications = $('#faye-notifications');
+      PrivatePub.subscribe('/users/#{current_user.id}', function(data) {
+        $notifications.html(data.count);
+        $notifications.removeClass('hidden');
+        $.gritter.add({title: data.title, text: data.content + ' ' + link_to('#{t('common.read')}', data.link), image: data.avatar});
+      });
+    });
